@@ -4,15 +4,17 @@ physical_devices = tf.config.list_physical_devices('GPU')
 for device in physical_devices:
     tf.config.experimental.set_memory_growth(device, True)
 
-from twitter.hmli.nimbus.modeling.model_config import FeatureType, EncodingType, Feature, Model, LogType
-from twitter.hmli.nimbus.modeling.feature_loader import BigQueryFeatureLoader
-from twitter.cuad.representation.models.text_encoder import TextEncoder
-from twitter.cuad.representation.models.optimization import create_optimizer
-from twitter.hmli.nimbus.modeling.feature_encoder import FeatureEncoder
-
 import numpy as np
 import pandas as pd
 import utils
+
+from twitter.cuad.representation.models.optimization import create_optimizer
+from twitter.cuad.representation.models.text_encoder import TextEncoder
+from twitter.hmli.nimbus.modeling.feature_encoder import FeatureEncoder
+from twitter.hmli.nimbus.modeling.feature_loader import BigQueryFeatureLoader
+from twitter.hmli.nimbus.modeling.model_config import (EncodingType, Feature,
+                                                       FeatureType, LogType,
+                                                       Model)
 
 cat_names = [
 ...
@@ -155,8 +157,10 @@ model.summary()
 pr_auc.name
 
 import getpass
+
 import wandb
 from wandb.keras import WandbCallback
+
 try:
   wandb_key = ...
   wandb.login(...)
@@ -233,8 +237,10 @@ test_media_not_nsfw = test.filter(lambda x, y: tf.logical_and(tf.equal(x["has_me
 for d in [test, test_only_media, test_only_nsfw, test_no_media, test_media_not_nsfw]:
   print(d.reduce(0, lambda x, _: x + 1).numpy())
 
-from notebook_eval_utils import SparseMultilabelEvaluator, EvalConfig
 from dataclasses import asdict
+
+from notebook_eval_utils import EvalConfig, SparseMultilabelEvaluator
+
 
 def display_metrics(probs, targets, labels=labels):
   eval_config = EvalConfig(prediction_threshold=0.5, precision_k=0.9)

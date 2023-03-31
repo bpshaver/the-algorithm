@@ -1,22 +1,14 @@
-from importlib import import_module
 import os
-
-from toxicity_ml_pipeline.settings.default_settings_tox import (
-  INNER_CV,
-  LOCAL_DIR,
-  MAX_SEQ_LENGTH,
-  NUM_PREFETCH,
-  NUM_WORKERS,
-  OUTER_CV,
-  TARGET_POS_PER_EPOCH,
-)
-from toxicity_ml_pipeline.utils.helpers import execute_command
+from importlib import import_module
 
 import numpy as np
 import pandas
-from sklearn.model_selection import StratifiedKFold
 import tensorflow as tf
-
+from sklearn.model_selection import StratifiedKFold
+from toxicity_ml_pipeline.settings.default_settings_tox import (
+    INNER_CV, LOCAL_DIR, MAX_SEQ_LENGTH, NUM_PREFETCH, NUM_WORKERS, OUTER_CV,
+    TARGET_POS_PER_EPOCH)
+from toxicity_ml_pipeline.utils.helpers import execute_command
 
 try:
   from transformers import AutoTokenizer, DataCollatorWithPadding

@@ -1,10 +1,8 @@
-from abc import ABC
 import re
-
-from toxicity_ml_pipeline.settings.hcomp_settings import TOXIC_35
+from abc import ABC
 
 import numpy as np
-
+from toxicity_ml_pipeline.settings.hcomp_settings import TOXIC_35
 
 TOXIC_35_set = set(TOXIC_35)
 

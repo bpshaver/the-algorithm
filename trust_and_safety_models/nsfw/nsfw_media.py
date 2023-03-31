@@ -1,18 +1,18 @@
-import kerastuner as kt
+import glob
 import math
+import os
+import random
+
+import kerastuner as kt
 import numpy as np
 import pandas as pd
-import random
 import sklearn.metrics
 import tensorflow as tf
-import os
-import glob
-
-from tqdm import tqdm
-from matplotlib import pyplot as plt
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
 from google.cloud import storage
+from matplotlib import pyplot as plt
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.models import Sequential
+from tqdm import tqdm
 
 physical_devices = tf.config.list_physical_devices('GPU')
 physical_devices

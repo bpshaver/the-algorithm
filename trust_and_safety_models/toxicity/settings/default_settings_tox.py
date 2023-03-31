@@ -1,6 +1,5 @@
 import os
 
-
 TEAM_PROJECT = "twttr-toxicity-prod"
 try:
   from google.cloud import bigquery

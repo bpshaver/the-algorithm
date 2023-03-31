@@ -1,13 +1,14 @@
+import os
+import re
 from datetime import datetime
 from functools import reduce
-import os
-import pandas as pd
-import re
-from sklearn.metrics import average_precision_score, classification_report, precision_recall_curve, PrecisionRecallDisplay
-from sklearn.model_selection import train_test_split
-import tensorflow as tf
+
 import matplotlib.pyplot as plt
-import re
+import pandas as pd
+import tensorflow as tf
+from sklearn.metrics import (PrecisionRecallDisplay, average_precision_score,
+                             classification_report, precision_recall_curve)
+from sklearn.model_selection import train_test_split
 
 from twitter.cuad.representation.models.optimization import create_optimizer
 from twitter.cuad.representation.models.text_encoder import TextEncoder
